@@ -1,0 +1,101 @@
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30vh; /* Adjust the height as needed, 100vh will make it take full viewport height */
+}
+
+/* If you have specific heights for your rows or cols, adjust the .center height accordingly */
+
+@media screen and (max-width: 765px) {
+  .center {
+    flex-direction: column;
+  }
+}
+
+canvas {
+  display: block;
+  vertical-align: bottom;
+}
+
+.image {
+  border-radius: 50%;
+}
+
+.header1 {
+  font-family: 'Righteous', cursive;
+  font-size: 4vw;
+}
+
+.header2 {
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 1.4vw;
+}
+
+.header3 {
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 2.2vw;
+  font-weight: bold;
+  margin-left: -30px;
+}
+
+@media screen and (max-width: 785px) {
+  .header1 {
+    font-size: 8vw;
+  }
+}
+
+@media screen and (max-width: 765px) {
+  body {
+    text-align: center;
+  }
+  .header1 {
+    font-size: 9vw;
+  }
+  .header2 {
+    font-size: 2.5vw;
+  }
+}
+
+@media screen and (min-width: 1390px) {
+  .header2 {
+    font-size: 1.3vw;
+  }
+}
+
+.projects-link-container {
+    position: fixed; /* or 'absolute', depending on your layout */
+    top: 15px; /* Distance from the top of the viewport */
+    left: 25px; /* Distance from the right of the viewport */
+    z-index: 1000; /* Ensures the link is above other content */
+}
+
+.projects-link-container a {
+    color: #000; /* Black text color */
+    text-decoration: none; /* Removes underline from links */
+    font-family: 'Ubuntu Mono', monospace; /* Uses Ubuntu Mono font */
+    font-weight: bold; /* Adjust as needed */
+    font-size: 27px;
+}
+
+.projects-link-container a:hover {
+    border-bottom: 2px solid #000; /* Creates a darker underline */
+}
+
+.header3 a {
+  color: inherit; /* Inherits the text color from the parent, change as needed */
+  text-decoration: none; /* Removes underline from the link */
+}
+
+.header3 a:hover {
+  color: #000; /* Change hover color as needed */
+}
+
+.header3 .fa-github {
+  margin-left: 5px; /* Adds some space between the project name and the icon */
+  color: #000;
+}
+
+.header3 .fa-github:hover {
+  border-bottom: 2px solid #000;
+}
