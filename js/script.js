@@ -180,6 +180,7 @@ function handleKeyPress(event) {
               history.push("\n"+output + " ");
         }
       }
+      event.preventDefault();
     } else if (event.key === 'Backspace' && commandBuffer.length) {
         commandBuffer = commandBuffer.slice(0, -1);
     } else if (event.key.length === 1) {
