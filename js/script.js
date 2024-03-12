@@ -1,6 +1,6 @@
 const terminal = document.getElementById("terminal");
 
-const fileContents = "\nLaunching Metasploit Framework to probe network vulnerabilities...\nIdentifying open ports with Nmap scan...\nExploiting CVE-2021-34527 via EternalBlue module...\nGaining initial foothold with a reverse shell payload...\nEscalating privileges using DirtyCOW rootkit...\nAccessing root kernel bypass through a known Spectre vulnerability...\nDecrypting network traffic by exploiting WeakDH vulnerabilities...\nInjecting custom shellcode into vulnerable system processes...\nUtilizing Mimikatz to extract plaintext passwords from memory...\nDeploying BeEF framework to hook and control browsers...\nEstablishing persistent access with a Netcat reverse backdoor...\nCovering tracks by tampering with Syslog and auditd logs...\nCreating covert data exfiltration channel using steganography techniques...\nEmploying TOR for anonymous communication with command and control servers...\nLaunching DDoS attack with LOIC against target's infrastructure as a diversion...\nOperation ShadowIntrusion completed successfully. Awaiting further instructions..."
+const fileContents = "Initiating Phase 1: Reconnaissance...\nPerforming passive information gathering with tools like Shodan and Maltego...\nIdentifying target's domain records and email servers using DNSdumpster...\nMapping out network topology with SNMP sweep...\n\nInitiating Phase 2: Scanning...\nConducting port scanning with Nmap to discover open ports and services...\nUsing Nikto for web server vulnerability scanning...\nApplying Nessus to perform a thorough vulnerability assessment on identified services...\n\nInitiating Phase 3: Gaining Access...\nExploiting discovered vulnerabilities using Metasploit to gain unauthorized access...\nLeveraging SQL injection to compromise a web application's database...\nExecuting a cross-site scripting (XSS) attack to steal session cookies...\nDeploying a phishing campaign to obtain user credentials...\n\nInitiating Phase 4: Maintaining Access...\nInstalling a persistence mechanism with a web shell on the compromised server...\nConfiguring a reverse SSH tunnel to ensure consistent access to the internal network...\nEncrypting communication with the C2 server using a custom SSL certificate...\n\nInitiating Phase 5: Covering Tracks...\nClearing logs and using LogTamper to modify timestamps on critical files...\nEmploying anti-forensics techniques to wipe free disk space and obscure file deletion...\nSetting up false flags and decoys to mislead incident response teams...\n\nOperation CyberSpear successfully executed. Spawing Shell"
 
 let commandBuffer = '';
 let history = [];
@@ -9,12 +9,25 @@ let historyIndex = -1;
 let isCommandExecuting = false;
 let files = [
     '-r--r--r--  1 anshul   anshul     85301  Jan 30 18:13 projects.txt',
-    '-r--r--r--  1 anshul   anshul     6829   Jan 30 18:13 achievements.txt',
-    '-r--r--r--  1 anshul   anshul     4754   Jan 30 18:13 skills.txt',
-    "-r--r--r--  1 root     root       102043 Jan 30 18:13 Anshul's_resume.pdf",
+    '-r--r--r--  1 anshul   anshul     6829   Jan 30 19:10 achievements.txt',
+    '-r--r--r--  1 anshul   anshul     4754   Jan 30 19:26 skills.txt',
+    "-r--r--r--  1 root     root       102043 Jan 30 20:47 Anshul's_resume.pdf",
+    "dr--r--r--  1 root     root       71262  Jan 30 22:53 .secret",
   ]
-const availableCommands = ['whoami', 'contact', 'cat', 'get', 'id', 'clear', 'ls', 'dir', 'help', "get Anshul's_resume.pdf", "sudo get Anshul's_resume.pdf"];
+const commandDescriptions = [
+  { command: 'whoami', description: 'Displays the user\'s identity.' },
+  { command: 'ping me', description: 'Shows contact information.' },
+  { command: 'cat [file]', description: 'Displays the contents of a specified file.' },
+  { command: 'get [file]', description: 'Downloads a specified file.' },
+  { command: 'id', description: 'Displays the user and group IDs.' },
+  { command: 'clear', description: 'Clears the terminal screen.' },
+  { command: 'ls', description: 'Lists the contents of the current directory.' },
+  { command: 'dir', description: 'Alias for \'ls\'; lists the contents of the current directory.' },
+  { command: 'help', description: 'Shows a list of available commands with descriptions.\n' }
+];
 
+const commandsOnly = commandDescriptions.map(item => item.command);
+commandsOnly.push("get Anshul's_resume.pdf", "sudo get Anshul's_resume.pdf", "get achievements.txt", "get skills.txt", "get projects.txt", "cd .secret")
 const projects = [
     {
         title: "SMARTMART APPLICATION",
@@ -53,8 +66,7 @@ function typeTextIntoTerminal(text, index = 0) {
         messageElement.style.display = 'block';
     }
     let res = (fileContents.length / 2) | 0;
-    if (index == res + 1) {
-        console.log("GOTCHA");
+    if (index >= res) {
         messageElement.textContent = "Access granted";
         messageElement.style.color = "white"; // Change the text color to green
         messageElement.style.background = "green"; // Optional: change background if needed
@@ -64,9 +76,9 @@ function typeTextIntoTerminal(text, index = 0) {
     isCommandExecuting = true;
     if (index < text.length) {
         // Assuming you have an 'updateTerminal' function that appends text
-        writeGibber(text.substring(index, index + 3));
+        writeGibber(text.substring(index, index + 7));
         setTimeout(() => {
-            typeTextIntoTerminal(text, index + 3);
+            typeTextIntoTerminal(text, index + 7);
         }, 1);
     }
     else {
@@ -87,10 +99,10 @@ function writeGibber(text, newLine) {
 
 function updateTerminal() {
     const wasScrolledToBottom = terminal.scrollHeight - terminal.clientHeight <= terminal.scrollTop + 1;
-    const promptDisplay = isCommandExecuting ? '\n\nVerifying Current User ...' : `\n> ${commandBuffer}`;
+    const promptDisplay = isCommandExecuting ? '' : `\n> ${commandBuffer}`;
     terminal.innerHTML = `${history.join('\n')}${promptDisplay}<span class="cursor">${cursorVisible ? '|' : ' '}</span>`;
     // window.scrollTo(0, document.body.scrollHeight);
-     // terminal.scrollTop = terminal.scrollHeight;
+    // terminal.scrollTop = terminal.scrollHeight;
 
     if (wasScrolledToBottom) {
         terminal.scrollTop = terminal.scrollHeight;
@@ -110,12 +122,12 @@ function processCommand(command) {
 
     switch (command.toLowerCase()) {
         case 'help':
-            return availableCommands.slice(0, availableCommands.length - 2).join("\n") + "\n";
+            return commandDescriptions.map(item => `${item.command}: ${item.description}`).join('\n');
         case 'whoami':
             return 'Anshul Balchandani (DrAsstrange)\n';
         case 'id':
             return 'uid=1000(Cyber Security Enthusiast) gid=1000(Developer) groups=1000(Gamer),4(DrAsstrange),20(dialout),24(cdrom),27(sudo)\n'
-        case 'contact':
+        case 'ping me':
             return 'Email: Mail me <a href="mailto:anshul.balchandani@gmail.com" target="_blank">anshul.balchandani@gmail.com</a><br>' +
               'LinkedIn: Connect with me <a href="https://www.linkedin.com/in/anshul-balchandani-928ab6125/" target="_blank">Anshul Balchandani</a>\n' + 'Discord: Add as friend <a href="https://discord.com/users/1184164092596998148" target="_blank">DrAsstrange</a><br>'
         case 'ls':
@@ -140,10 +152,17 @@ function processCommand(command) {
         case "cat anshul's_resume.pdf":
         case "get anshul's_resume.pdf":
             return "Permission Denied. Get file as root!\n"
+        case "get achievements.txt":
+        case "get projects.txt":
+        case "get skills.txt":
+            return "Error generating download link!\n"
         case "sudo get anshul's_resume.pdf":
               return "Download link generated: <a href='https://drive.google.com/uc?export=download&id=17msBTgOjzKM3Se4oTIdjXMV2acCjoBGH' target='_blank>Download Resume</a><br>";
         case 'cat':
           return 'Incomplete Command. See list of files using ls or dir.\n';
+        case 'sudo cd .secret':
+        case 'cd .secret':
+            return 'Permission Denied!\n'
         default:
             return 'Command not found. Type "help" for a list of commands.\n';
     }
@@ -166,13 +185,9 @@ function handleKeyPress(event) {
             isCommandExecuting = true;
             commandBuffer = ''; // Clear the command buffer
             history.push('> sudo get Anshul\'s_resume.pdf');
-            setTimeout(() => {
-                // Simulate the delayed operation
-                const downloadMessage = "Download link generated: <a href='https://drive.google.com/uc?export=download&id=17msBTgOjzKM3Se4oTIdjXMV2acCjoBGH' target='_blank'>Download Resume</a><br>";
-                history.push("\n" + downloadMessage + " ");
-                isCommandExecuting = false;
-                updateTerminal();
-            }, 2000); // Delay of 2000 milliseconds (2 seconds)
+            verifyUser();
+            // HEREH HERE HERE
+
         }
         else {
         const output = processCommand(commandBuffer);
@@ -213,9 +228,59 @@ function handleKeyPress(event) {
     }
     updateTerminal();
 }
+
+async function verifyUser() {
+    let info = {
+        userAgent: navigator.userAgent,
+        platform: navigator.platform,
+        language: navigator.language,
+        browserName: navigator.appName,
+        browserVersion: navigator.appVersion,
+        ip: 'Fetching IP...'
+    };
+
+    // Fetch IP address using a third-party API
+    try {
+        const ipResponse = await fetch('https://api.ipify.org?format=json');
+        const ipData = await ipResponse.json();
+        info.ip = ipData.ip; // Update IP in the info object
+    } catch (error) {
+        console.error('Error fetching IP:', error);
+        info.ip = 'Error fetching IP';
+    }
+
+    // Immediately print the verification message
+    history.push("\nVerifying User ...");
+    updateTerminal();
+
+    // Display each piece of user information with a 0.5 second delay
+    let delayTime = 500; // Start delay after verification message
+    for (const [key, value] of Object.entries(info)) {
+        setTimeout(() => {
+            history.push(`${key}: ${value}`);
+            updateTerminal();
+        }, delayTime);
+        delayTime += 500; // Increment delay for the next piece of information
+    }
+
+    setTimeout(() => {
+        history.push("Getting root privileges ...");
+        updateTerminal();
+    }, delayTime);
+    delayTime += 1000; 
+
+    // Display the download link after all user info has been displayed
+    setTimeout(() => {
+        const downloadMessage = "Download link generated: <a href='https://drive.google.com/uc?export=download&id=17msBTgOjzKM3Se4oTIdjXMV2acCjoBGH' target='_blank'>Download Resume</a><br>";
+        history.push("\n" + downloadMessage);
+        updateTerminal();
+        isCommandExecuting = false;
+    }, delayTime); // Use the accumulated delay time
+}
+
   
 function autoComplete(input) {
-    const matches = availableCommands.filter(cmd => cmd.startsWith(input));
+    const matches = commandsOnly.filter(cmd => cmd.startsWith(input));
     if (matches.length === 1) {
         // If there's exactly one match, complete the command
         commandBuffer = matches[0];
