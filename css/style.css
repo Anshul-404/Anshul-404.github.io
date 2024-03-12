@@ -1,0 +1,78 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: black;
+}
+
+#terminal {
+    color: #00FF00;
+    white-space: pre;
+    padding: 20px;
+    overflow-y: auto;
+    height: 100%;
+    cursor: text;
+    font-size: 18px;
+    white-space: pre-wrap; /* Allows text to wrap within the container */
+    word-wrap: break-word; /* Breaks words that are too long for the line */
+}
+
+#terminal a {
+    color: #00FF00; /* The same green color as your terminal text */
+    text-decoration: underline; /* Removes the underline from links */
+}
+
+
+#simple-portfolio-btn {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    padding: 10px;
+    background-color: #0f0; /* Bright green to match the terminal text color */
+    color: #000; /* Black text */
+    text-decoration: none;
+    font-family: 'Courier New', Courier, monospace;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+#simple-portfolio-btn:hover {
+    background-color: #0d0; /* Slightly darker green on hover */
+}
+
+.msg {
+  font-family: monospace;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 5vh;
+  padding-top: 5vh;
+  background: red;
+  box-shadow: 0 0 30px red;
+  text-shadow: 0 0 20px white;
+  color: white;
+  width: 20vw;
+  height: 11vh;
+  position: absolute;
+  left: 50%;
+  margin-left: -10vw;
+  top: 50%;
+  margin-top: -5vh;
+  text-align: center;
+  min-width: 200px;
+  animation-name: blink;
+  animation-duration: 0.6s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

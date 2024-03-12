@@ -1,0 +1,29 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  background-color: black;
+  color: green;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+#terminal {
+  height: 100%;
+  padding: 20px;
+}
+
+#input {
+  width: calc(100% - 40px);
+  background-color: black;
+  border: none;
+  color: green;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+}
+
+#output {
+  white-space: pre-line;
+}
+
+input:focus, button:focus {
+  outline: none;
+}
