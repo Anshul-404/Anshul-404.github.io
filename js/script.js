@@ -18,8 +18,8 @@ const availableCommands = ['whoami', 'contact', 'cat', 'get', 'id', 'clear', 'ls
 const projects = [
     {
         title: "SMARTMART APPLICATION",
-        codeLink: "URL_to_Code",
-        videoLink: "URL_to_Video",
+        codeLink: "https://github.com/Anshul-404/SmartMart",
+        videoLink: "https://www.youtube.com/watch?v=mTfKFCDjFlk",
         description: [
             "- Developed a Java desktop application for automatic barcode generation, reducing data entry time by 30%.",
             "- Implemented robust security measures, reducing administrative overhead by 30-40%."
@@ -27,8 +27,8 @@ const projects = [
     },
     {
         title: "BRAINTEASER APPLICATION",
-        codeLink: "URL_to_Code",
-        videoLink: "URL_to_Video",
+        codeLink: "https://github.com/Anshul-404/BrainTeaser",
+        videoLink: "https://www.youtube.com/watch?v=FJid-oUBGgQ",
         description: [
             "- Created Java desktop software for exam creation, reducing creation time by 40% compared to traditional methods.",
             "- Devised feature for students to access past results, decreasing inquiries to teachers by 30%."
@@ -36,7 +36,7 @@ const projects = [
     },
     {
         title: "METASPLOOTABLE - VULNERABILITY ASSESSMENT PROJECT FOR METASPLOITABLE 2",
-        codeLink: "URL_to_Analysis",
+        codeLink: "https://github.com/Anshul-404/MetaSplootable",
         description: [
             "- Conducted vulnerability assessments across multiple services in Metasploitable 2, providing detailed reports and mitigation strategies.",
             "- Applied security tools like Nmap and Metasploit for in-depth analysis, contributing to enhanced security practices."
