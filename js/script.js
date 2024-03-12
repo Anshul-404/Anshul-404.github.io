@@ -58,7 +58,7 @@ function typeTextIntoTerminal(text, index = 0) {
         messageElement.textContent = "Access granted";
         messageElement.style.color = "white"; // Change the text color to green
         messageElement.style.background = "green"; // Optional: change background if needed
-         messageElement.style.boxShadow = "0 0 30px green";
+        messageElement.style.boxShadow = "0 0 30px green";
     }
 
     isCommandExecuting = true;
@@ -86,9 +86,15 @@ function writeGibber(text, newLine) {
 
 
 function updateTerminal() {
+    const wasScrolledToBottom = terminal.scrollHeight - terminal.clientHeight <= terminal.scrollTop + 1;
     const promptDisplay = isCommandExecuting ? '\n\nVerifying Current User ...' : `\n> ${commandBuffer}`;
-        terminal.innerHTML = `${history.join('\n')}${promptDisplay}<span class="cursor">${cursorVisible ? '|' : ' '}</span>`;
-    window.scrollTo(0, document.body.scrollHeight);
+    terminal.innerHTML = `${history.join('\n')}${promptDisplay}<span class="cursor">${cursorVisible ? '|' : ' '}</span>`;
+    // window.scrollTo(0, document.body.scrollHeight);
+     // terminal.scrollTop = terminal.scrollHeight;
+
+    if (wasScrolledToBottom) {
+        terminal.scrollTop = terminal.scrollHeight;
+    }
 }
 
 function processCommand(command) {
