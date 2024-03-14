@@ -1,5 +1,5 @@
 const terminal = document.getElementById("terminal");
-
+let pageLoadTime = Date.now(); // Capture the page load time
 
 const fileContents = "\nInitiating Phase 1: Reconnaissance...\nPerforming passive information gathering with tools like Shodan and Maltego...\nIdentifying target's domain records and email servers using DNSdumpster...\nMapping out network topology with SNMP sweep...\n\nInitiating Phase 2: Scanning...\nConducting port scanning with Nmap to discover open ports and services...\nUsing Nikto for web server vulnerability scanning...\nApplying Nessus to perform a thorough vulnerability assessment on identified services...\n\nInitiating Phase 3: Gaining Access...\nExploiting discovered vulnerabilities using Metasploit to gain unauthorized access...\nLeveraging SQL injection to compromise a web application's database...\nExecuting a cross-site scripting (XSS) attack to steal session cookies...\nDeploying a phishing campaign to obtain user credentials...\n\nInitiating Phase 4: Maintaining Access...\nInstalling a persistence mechanism with a web shell on the compromised server...\nConfiguring a reverse SSH tunnel to ensure consistent access to the internal network...\nEncrypting communication with the C2 server using a custom SSL certificate...\n\nInitiating Phase 5: Covering Tracks...\nClearing logs and using LogTamper to modify timestamps on critical files...\nEmploying anti-forensics techniques to wipe free disk space and obscure file deletion...\nSetting up false flags and decoys to mislead incident response teams...\n\nOperation CyberSpear successfully executed. Spawing Shell"
 
@@ -339,11 +339,12 @@ function updateCpuUsage() {
     const mockSystemLoad = (Math.random() * 2).toFixed(2); // 0.00 to 2.00
     systemLoadElement.textContent = mockSystemLoad;
 
-    // Uptime (mocking this as hours and minutes)
     const uptimeElement = document.getElementById('uptime');
-    const mockUptimeHours = Math.floor(Math.random() * 24); // 0 to 23 hours
-    const mockUptimeMinutes = Math.floor(Math.random() * 60); // 0 to 59 minutes
-    uptimeElement.textContent = `${mockUptimeHours}h ${mockUptimeMinutes}m`;
+    let currentTime = Date.now(); // Get the current time
+    let elapsedTime = currentTime - pageLoadTime; // Calculate the elapsed time since the page was loaded
+    let elapsedMinutes = Math.floor((elapsedTime / (1000 * 60)) % 60); // Convert milliseconds to minutes
+    let elapsedSeconds = Math.floor((elapsedTime / (1000)) % 60);
+    uptimeElement.textContent = `${elapsedMinutes}h ${elapsedSeconds}m`;
 }
 
 
