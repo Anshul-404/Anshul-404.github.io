@@ -15,6 +15,7 @@ body, html {
     font-size: 18px;
     white-space: pre-wrap; /* Allows text to wrap within the container */
     word-wrap: break-word; /* Breaks words that are too long for the line */
+    padding-right: 170px;
 }
 
 
@@ -26,7 +27,7 @@ body, html {
 
 #simple-portfolio-btn {
     position: fixed;
-    top: 10px;
+    top: 20px;
     right: 20px;
     padding: 10px;
     background-color: #0f0; /* Bright green to match the terminal text color */
@@ -68,6 +69,63 @@ body, html {
   animation-direction: alternate;
   animation-timing-function: linear;
 }
+
+#cpu-usage-box {
+    width: 205px;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background-color: #000;
+    color: #0f0;
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1em;
+    border: 1px solid #0f0;
+}
+
+#c2-communication-box {
+    position: fixed;
+    background-color: #000;
+    color: #0f0;
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1em;
+    width: 185px; /* Adjust based on your layout */
+    height: 400px; /* Fixed height */
+    right: 20px;
+    bottom: 190px;
+    border: 1px solid #0f0; /* Optional: adds a border to the box */
+}
+
+
+#c2-status {
+    font-size: 1em;
+    position: absolute;
+    top: 1;
+    width: 100%;
+}
+
+
+#c2-messages-container {
+/*    white-space: pre-wrap; /* Allows text to wrap within the container */*/
+    word-wrap: break-word; 
+    overflow-y: auto;
+    position: absolute;
+    top: 3.1em; /* Adjust based on the size of the status bar */
+    bottom: 0;
+    width: 180;
+    overflow-y: hidden; /* Hide vertical scrollbar and disable manual scroll */
+    padding: 0 0px;
+}
+
+
+#c2-messages {
+    font-size: 0.8em;
+    white-space: pre-wrap; /* Ensure text wraps and respects new lines */
+    margin-bottom: 10px; 
+}
+
+
 
 @keyframes blink {
   0% {

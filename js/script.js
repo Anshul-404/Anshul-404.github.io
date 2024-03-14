@@ -1,9 +1,7 @@
 const terminal = document.getElementById("terminal");
 
-const fileContents = '';
 
-
-// const fileContents = "\nInitiating Phase 1: Reconnaissance...\nPerforming passive information gathering with tools like Shodan and Maltego...\nIdentifying target's domain records and email servers using DNSdumpster...\nMapping out network topology with SNMP sweep...\n\nInitiating Phase 2: Scanning...\nConducting port scanning with Nmap to discover open ports and services...\nUsing Nikto for web server vulnerability scanning...\nApplying Nessus to perform a thorough vulnerability assessment on identified services...\n\nInitiating Phase 3: Gaining Access...\nExploiting discovered vulnerabilities using Metasploit to gain unauthorized access...\nLeveraging SQL injection to compromise a web application's database...\nExecuting a cross-site scripting (XSS) attack to steal session cookies...\nDeploying a phishing campaign to obtain user credentials...\n\nInitiating Phase 4: Maintaining Access...\nInstalling a persistence mechanism with a web shell on the compromised server...\nConfiguring a reverse SSH tunnel to ensure consistent access to the internal network...\nEncrypting communication with the C2 server using a custom SSL certificate...\n\nInitiating Phase 5: Covering Tracks...\nClearing logs and using LogTamper to modify timestamps on critical files...\nEmploying anti-forensics techniques to wipe free disk space and obscure file deletion...\nSetting up false flags and decoys to mislead incident response teams...\n\nOperation CyberSpear successfully executed. Spawing Shell"
+const fileContents = "\nInitiating Phase 1: Reconnaissance...\nPerforming passive information gathering with tools like Shodan and Maltego...\nIdentifying target's domain records and email servers using DNSdumpster...\nMapping out network topology with SNMP sweep...\n\nInitiating Phase 2: Scanning...\nConducting port scanning with Nmap to discover open ports and services...\nUsing Nikto for web server vulnerability scanning...\nApplying Nessus to perform a thorough vulnerability assessment on identified services...\n\nInitiating Phase 3: Gaining Access...\nExploiting discovered vulnerabilities using Metasploit to gain unauthorized access...\nLeveraging SQL injection to compromise a web application's database...\nExecuting a cross-site scripting (XSS) attack to steal session cookies...\nDeploying a phishing campaign to obtain user credentials...\n\nInitiating Phase 4: Maintaining Access...\nInstalling a persistence mechanism with a web shell on the compromised server...\nConfiguring a reverse SSH tunnel to ensure consistent access to the internal network...\nEncrypting communication with the C2 server using a custom SSL certificate...\n\nInitiating Phase 5: Covering Tracks...\nClearing logs and using LogTamper to modify timestamps on critical files...\nEmploying anti-forensics techniques to wipe free disk space and obscure file deletion...\nSetting up false flags and decoys to mislead incident response teams...\n\nOperation CyberSpear successfully executed. Spawing Shell"
 
 let commandBuffer = '';
 let history = [];
@@ -79,9 +77,9 @@ function typeTextIntoTerminal(text, index = 0) {
     isCommandExecuting = true;
     if (index < text.length) {
         // Assuming you have an 'updateTerminal' function that appends text
-        writeGibber(text.substring(index, index + 7));
+        writeGibber(text.substring(index, index + 5));
         setTimeout(() => {
-            typeTextIntoTerminal(text, index + 7);
+            typeTextIntoTerminal(text, index + 5);
         }, 1);
     }
     else {
@@ -130,7 +128,7 @@ function processCommand(command) {
         case 'whoami':
             return 'Anshul Balchandani (DrAsstrange)\n';
         case 'id':
-            return 'uid=1000(Cyber Security Enthusiast) gid=1000(Developer) groups=1000(Gamer),4(DrAsstrange),20(dialout),24(cdrom),27(sudo)\n'
+            return 'uid=1000(Cyber Security Enthusiast) gid=1000(Developer) groups=1000(Gamer),4(DrAsstrange),24(cdrom),27(sudo)\n'
         case 'ping me':
             return 'Email: Mail me <a href="mailto:anshul.balchandani@gmail.com" target="_blank">anshul.balchandani@gmail.com</a><br>' +
               'LinkedIn: Connect with me <a href="https://www.linkedin.com/in/anshul-balchandani-928ab6125/" target="_blank">Anshul Balchandani</a>\n' + 'Discord: Add as friend <a href="https://discord.com/users/1184164092596998148" target="_blank">DrAsstrange</a><br>'
@@ -191,8 +189,6 @@ function handleKeyPress(event) {
             commandBuffer = ''; // Clear the command buffer
             history.push('> sudo get Anshul\'s_resume.pdf');
             verifyUser();
-            // HEREH HERE HERE
-
         }
         else {
         const output = processCommand(commandBuffer);
@@ -261,15 +257,22 @@ async function verifyUser() {
     // Display each piece of user information with a 0.5 second delay
     let delayTime = 500; // Start delay after verification message
     for (const [key, value] of Object.entries(info)) {
+        const truncatedValue = value.length > 90 ? value.substring(0, 90) + '...' : value; // Truncate if longer than 100 chars
         setTimeout(() => {
-            history.push(`${key}: ${value}`);
+            history.push(`${key}: ${truncatedValue}`);
             updateTerminal();
         }, delayTime);
         delayTime += 500; // Increment delay for the next piece of information
     }
 
     setTimeout(() => {
-        history.push("Getting root privileges ...");
+        history.push("User Verification Successful! Escalating Privilege ...");
+        updateTerminal();
+    }, delayTime);
+    delayTime += 2000; 
+
+    setTimeout(() => {
+        history.push("Got root shell! Generating download link ...");
         updateTerminal();
     }, delayTime);
     delayTime += 1000; 
@@ -319,5 +322,74 @@ document.addEventListener('DOMContentLoaded', (event) => {
 document.addEventListener('keydown', handleKeyPress);
 setInterval(blinkCursor, 500); // Blink cursor every 500ms
 
+function updateCpuUsage() {
+    // CPU Usage
+    const cpuUsageElement = document.getElementById('cpu-usage');
+    const mockCpuUsage = Math.floor(Math.random() * 100) + 1; // 1% to 100%
+    cpuUsageElement.textContent = `${mockCpuUsage}%`;
+
+    // Core Usage (simulating a dual-core scenario for simplicity)
+    const coreUsageElement = document.getElementById('core-usage');
+    const mockCoreUsage1 = Math.floor(Math.random() * 100) + 1; // Core 1
+    const mockCoreUsage2 = Math.floor(Math.random() * 100) + 1; // Core 2
+    coreUsageElement.textContent = `${mockCoreUsage1}%, ${mockCoreUsage2}%`;
+
+    // System Load (mocking this as a floating-point number average over 1 minute)
+    const systemLoadElement = document.getElementById('system-load');
+    const mockSystemLoad = (Math.random() * 2).toFixed(2); // 0.00 to 2.00
+    systemLoadElement.textContent = mockSystemLoad;
+
+    // Uptime (mocking this as hours and minutes)
+    const uptimeElement = document.getElementById('uptime');
+    const mockUptimeHours = Math.floor(Math.random() * 24); // 0 to 23 hours
+    const mockUptimeMinutes = Math.floor(Math.random() * 60); // 0 to 59 minutes
+    uptimeElement.textContent = `${mockUptimeHours}h ${mockUptimeMinutes}m`;
+}
+
+
+function addC2Message() {
+    const c2Box = document.getElementById('c2-communication-box');
+    const messagesContainer = document.getElementById('c2-messages');
+    const c2MessagesContainer = document.getElementById('c2-messages-container'); // This is the scrollable container
+
+    // Enhanced array of potential messages with numbers for added realism
+    const possibleMessages = [
+        `C2> Executed successfully at ${new Date().toLocaleTimeString()}.`,
+        "C2> Data exfiltration initiated... 152.4 MB transferred.",
+        "C2> Establishing persistence via scheduled task.",
+        "C2> Bypassing firewall rules. Rule ID 4532 bypassed.",
+        "C2> Encrypting target files... 320 files encrypted.",
+        "C2> Scanning network for lateral movement opportunities... 3 hosts identified.",
+        "C2> Extracting credentials from memory... 5 sets of credentials obtained.",
+        "C2> Uploading malware payload (size: 564 KB).",
+        "C2> Received heartbeat signal from implant on host 192.168.1.105.",
+        "C2> Updating C2 server address to 203.0.113.45.",
+        "C2> Installing web shell for persistent access.",
+        "C2> Configuring reverse SSH tunnel on port 2222.",
+        "C2> Registry modification applied for auto-start.",
+        "C2> 404 error page replaced with phishing login page."
+    ];
+
+    // Select a random message
+    const newMessage = possibleMessages[Math.floor(Math.random() * possibleMessages.length)] + "\n";
+
+    // Add the new message using innerHTML for simplicity here; for security, consider creating text nodes or sanitizing input
+    messagesContainer.innerHTML += newMessage;
+
+    // Ensure the newly added message scrolls into view
+    c2MessagesContainer.scrollTop = c2MessagesContainer.scrollHeight;
+}
+
+// Example of calling addC2Message at varying intervals for realism
+function simulateC2Communication() {
+    addC2Message(); // Add initial message immediately
+
+    // Then add more messages at random intervals
+    setInterval(addC2Message,  Math.random() * (5000 - 2000) + 2000); // Between 2 and 5 seconds, adjust as needed
+}
+
+simulateC2Communication(); // Start the simulation
+
+setInterval(updateCpuUsage, 1000);
 updateTerminal(); // Initial display
 
