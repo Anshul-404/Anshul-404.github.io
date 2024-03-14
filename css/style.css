@@ -17,6 +17,7 @@ body, html {
     word-wrap: break-word; /* Breaks words that are too long for the line */
 }
 
+
 #terminal a {
     color: #00FF00; /* The same green color as your terminal text */
     text-decoration: underline; /* Removes the underline from links */
