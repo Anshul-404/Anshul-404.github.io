@@ -99,3 +99,62 @@ canvas {
 .header3 .fa-github:hover {
   border-bottom: 2px solid #000;
 }
+
+
+#terminal-portfolio-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px;
+    background-color: #0f0; /* Bright green to match the terminal text color */
+    color: #000; /* Black text */
+    text-decoration: none;
+    font-family: 'Courier New', Courier, monospace;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 16px;
+    display: inline-block; /* Added for alignment */
+    line-height: normal; /* Adjust as needed */
+    letter-spacing: normal; /* Adjust as needed */
+    animation: shift 4s ease-in-out infinite alternate;
+    z-index: 1;
+}
+
+#terminal-portfolio-btn:hover {
+    background-color: #0d0; /* Slightly darker green on hover */
+}
+
+@keyframes shift {
+   0%, 40%, 44%, 58%, 61%, 65%, 69%, 73%, 100% {
+      transform: skewX(0deg);
+   }
+
+   41% {
+      transform: skewX(10deg);
+   }
+
+   42% {
+      transform: skewX(-10deg);
+   }
+
+   59% {
+      transform: skewX(40deg) skewY(10deg);
+   }
+
+   60% {
+      transform: skewX(-40deg) skewY(-10deg);
+   }
+
+   63% {
+      transform: skewX(10deg) skewY(-5deg);
+   }
+
+   70% {
+      transform: skewX(-50deg) skewY(-20deg);
+   }
+
+   71% {
+      transform: skewX(10deg) skewY(-10deg);
+   }
+}

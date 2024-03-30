@@ -389,8 +389,16 @@ function simulateC2Communication() {
     setInterval(addC2Message,  Math.random() * (5000 - 2000) + 2000); // Between 2 and 5 seconds, adjust as needed
 }
 
-simulateC2Communication(); // Start the simulation
+// simulateC2Communication(); // Start the simulation
 
 setInterval(updateCpuUsage, 1000);
 updateTerminal(); // Initial display
 
+
+function redirectBasedOnDevice() {
+    // Check if the device is mobile
+    if (/Mobi|Android/i.test(navigator.userAgent)) {
+        // If mobile, redirect to the mobile page and disable terminal button
+        window.location.href = "./simple_portfolio.html";
+    }
+}

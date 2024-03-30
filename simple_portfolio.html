@@ -12,11 +12,27 @@
   <link rel="stylesheet" href="css/css-main.css" type="text/css">
   <link rel="stylesheet" href="css/gravity.css" type="text/css">
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <script type="text/javascript">
+    function redirectBasedOnDevice() {
+    // Check if the device is mobile
+    if (/Mobi|Android/i.test(navigator.userAgent)) {
+        // If mobile, disable terminal button
+        hideButton();
+      }
+    }
+    function hideButton() {
+         var button = document.getElementById("terminal-portfolio-btn");
+            if (button) {
+                button.style.display = "none";
+            }
+    }
+
+  </script>
   </head>
-  <body>
+  <body onload="redirectBasedOnDevice();">
   <div class="projects-link-container">
     <a href="projects.html" target="_self">My Projects</a>
-</div>
+<a href="./index.html" id="terminal-portfolio-btn">Spawn Reverse Shell</a></div>
   <canvas id="c"></canvas>
   <div class="container">
     <div class="center">
