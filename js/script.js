@@ -128,7 +128,7 @@ function processCommand(command) {
         case 'whoami':
             return 'Anshul Balchandani (DrAsstrange)\n';
         case 'id':
-            return 'uid=1000(Cyber Security Enthusiast) gid=1000(Developer) groups=1000(Gamer),4(DrAsstrange),24(cdrom),27(sudo)\n'
+            return 'uid=1000(Cyber Security Enthusiast) gid=1000(Developer) groups=1000(Gamer),4(SDE @Zscaler),24(DrAsstrange),27(sudo)\n'
         case 'ping me':
             return 'Email: Mail me <a href="mailto:anshul.balchandani@gmail.com" target="_blank">anshul.balchandani@gmail.com</a><br>' +
               'LinkedIn: Connect with me <a href="https://www.linkedin.com/in/anshul-balchandani-928ab6125/" target="_blank">Anshul Balchandani</a>\n' + 'Discord: Add as friend <a href="https://discord.com/users/1184164092596998148" target="_blank">DrAsstrange</a><br>'
@@ -145,7 +145,7 @@ function processCommand(command) {
           });
           return output;
         case 'cat achievements.txt':
-          return '- Secured 5th Rank in TCS HackQuest Season 8\n- Solved 360+ LeetCode problems\n- Solved 360+ LeetCode problems\n- Solved 380+ GeeksForGeeks problems\n- Completed 160+ TryHackMe rooms\n'
+          return '- Secured 5th Rank in TCS HackQuest Season 8\n- Solved 360+ LeetCode problems \n- Solved 380+ GeeksForGeeks problems\n- Completed 160+ TryHackMe rooms\n'
         case 'cat skills.txt':
           return "- Programming Languages: C, Java S.E, Rust (Basic)\n" +
              "- Databases: MySQL, OracleSQL\n" +
